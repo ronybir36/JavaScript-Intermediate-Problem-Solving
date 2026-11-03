@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unicode Character Value Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Unicode Character Value Finder</h1>
+        <label for="charInput">Enter a character:</label>
+        <input type="text" id="charInput" maxlength="100" placeholder="e.g., A or 😊">
+        <button id="getUnicode">Get Unicode Value</button>
+        <p id="output"></p>
+    </div>
+    <script>
+    const input = document.getElementById("charInput");
+    const button = document.getElementById("getUnicode");
+
+    button.addEventListener("click", function () {
+    const value = input.value;
+    const output = document.getElementById("output");
+
+    if (value.length === 0) {
+        output.textContent = "Please enter a character.";
+        return;
+    }
+
+    const unicode = value.codePointAt(0);
+
+    output.textContent =
+        `The Unicode value of "${value}" is: ${unicode}`;
+});
+
+// Press Enter
+input.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        button.click();
+    }
+});
+    </script>
+</body>
+</html>

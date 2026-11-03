@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Palindrome Checker</h1>
+        <p>Enter a word or phrase to check if it’s a palindrome.</p>
+        <input type="text" id="input" placeholder="Type here...">
+        <button id="check">Check Palindrome</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+    const inputField = document.getElementById("input");
+    const checkButton = document.getElementById("check");
+    const result = document.getElementById("result");
+
+    function checkPalindrome() {
+        const input = inputField.value.trim();
+
+        if (input) {
+            const norm = input
+                .replace(/[^a-zA-Z0-9]/g, "")
+                .toLowerCase();
+
+            const rev = norm.split("").reverse().join("");
+
+            if (norm === rev) {
+                result.textContent = `"${input}" is a palindrome!`;
+                result.style.color = "green";
+            } else {
+                result.textContent = `"${input}" is not a palindrome.`;
+                result.style.color = "red";
+            }
+        } else {
+            result.textContent = "Please enter some text.";
+            result.style.color = "orange";
+        }
+    }
+
+    // Click button
+    checkButton.addEventListener("click", checkPalindrome);
+
+    // Press Enter
+    inputField.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            checkPalindrome();
+        }
+    });
+</script>
+</script>
+</body>
+</html>

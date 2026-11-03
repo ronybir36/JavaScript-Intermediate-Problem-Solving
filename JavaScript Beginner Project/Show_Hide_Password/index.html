@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show Hide Password</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <label for="passes">
+            Enter Password
+        </label>
+        <div class="input-container">
+            <input id="passes" placeholder="Your password" type="password" />
+            <span class="eye-icon" id="eye-icon"> 👁️ </span>
+        </div>
+    </div>
+    <script>
+        let input = document.getElementById('passes');
+        let eyeIcon = document.getElementById('eye-icon');
+        eyeIcon.addEventListener('click', function () {
+            if (input.type === 'password') {
+                input.type = 'text';
+                eyeIcon.textContent = '🙉';
+            } else {
+                input.type = 'password';
+                eyeIcon.textContent = '👁️';
+            }
+        })
+    </script>
+</body>
+</html>
